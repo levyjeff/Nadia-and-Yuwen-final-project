@@ -34,9 +34,6 @@ head = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebK
 resp = requests.get(url, headers=head)
 soup = BeautifulSoup(resp.text, 'html.parser')
 
-# <div class web content
-# use <strong>, under <p>
-
 # reopen may be within li or p
 # maybe not reopen but Phase 4
 idx = []
@@ -63,7 +60,8 @@ for div in divs:
     p_descs.extend([p.text for p in p_text])
 p_descs = [s.replace('\xa0', ' ') for s in p_descs]
 
-# Work to get paragraph with phase 4, need to get the date -> still fail
+# Work to get paragraph with phase 4, need to get the date -> still fail since the date is also inside <p>
+# Maybe use keyword to indicate that we want the date?
 p_phase4 = []
 for i in idx_p:
     p_phase4.append(p_descs[i-1])
