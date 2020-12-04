@@ -52,7 +52,7 @@ p_phase4 = []
 for i in idx_p:
     p_phase4.append(p_descs[i-1])
  
-    # We might need to do NPL to get that the state moves into phase 4?
+# We might need to do NPL to get that the state moves into phase 4?
     
 # Try to put the words into a dataframe instead of list, or a dictionary?
 # Make a new column, containing different numbers at each date, then fill the rest of the rows with the same numbers
