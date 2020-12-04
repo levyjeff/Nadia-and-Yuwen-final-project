@@ -8,6 +8,7 @@ import pandas as pd
 import numpy as np
 
 # I tried with one url first, haven't iterate over several urls
+path = os.path.abspath(os.path.dirname(__file__))
 urls = []
 url = r'https://www.huschblackwell.com/illinois-state-by-state-covid-19-guidance'
 head = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36'}
@@ -40,13 +41,20 @@ for div in divs:
     p_text = div.find_all('p')
     p_descs.extend([p.text for p in p_text])
 p_descs = [s.replace('\xa0', ' ') for s in p_descs]
+p_descs = [s.replace(':', '') for s in p_descs]
+p_descs = p_descs.astype('string')
+
+# Get the index for each date
+for s in p_descs :
+   if len(s.split()) == 3:
+      print(s)
 
 # Work to get paragraph with phase 4, need to get the date -> still fail since the date is also inside <p>
 # Maybe use keyword to indicate that we want the date?
 
-from datetime import datetime
-p_descs['date'] = datetime.strptime(p_descs['text'],'%B %d, %Y')
-p_descs['date'] = p_descs['date'].strftime('%Y-%m-%d')
+import datetime as dt
+#p_descs['date'] = datetime.strptime(p_descs['text'],'%B %d, %Y')
+#p_descs['date'] = p_descs['date'].strftime('%Y-%m-%d')
 
 p_phase4 = []
 for i in idx_p:
@@ -65,20 +73,111 @@ p_descs['string'] = [" ".join(map(str, l)) for l in p_descs['text']]
 # strip <strong> and :</strong>
 p_descs['string'] = p_descs['string'].str.lstrip('<strong>')
 p_descs['string'] = p_descs['string'].str.rstrip(': </strong>')
-
-import datetime as dt
+p_descs['string'] = p_descs['string'].astype('string')
 
 date = pd.DataFrame(index=pd.date_range(start = dt.datetime(2020,1,1), end = dt.datetime.now(), freq='M'))
 date = date.index.to_series().apply(lambda x: dt.datetime.strftime(x, '%B %Y')).tolist()
 
+# Cannot use length for this to determine whether it is a date or not
 for l in p_descs['string']:
-    if any(l in s for s in date):
+    p_descs['len'] = len(l.split())
+
+for l in p_descs['string']:
+    if len(l.split()) == 3:
         p_descs['date'] = 1
     else:
         p_descs['date'] = np.nan
         
-p_descs['date'] = [datetime.strptime(l,'%B %d, %Y') for l in p_descs['string']]
 
     
 # Date has double [[]], can we use this to differentiate it from []? I don't think we can
 # get row index value if [[]] in the row
+
+# url with NPL https://www.cnn.com/interactive/2020/us/states-reopen-coronavirus-trnd/
+# stay-at-home order expired, open, reopening, 
+# get text based on each id then do NLP, each div id = state, each has the same class
+
+# Scrapping table , we just need column 1 and 3
+# url https://www.nga.org/coronavirus-reopening-plans/
+nga = r'https://www.nga.org/coronavirus-reopening-plans/'       
+resp1 = requests.get(nga, headers=head)
+soup1 = BeautifulSoup(resp1.text, 'html.parser')
+
+# Get the content
+# It is inside <tr class="row-2 even"
+rows1 = soup1.findAll('tr', attrs={ "class" : "row-2 even"})
+r_text = soup1.find('tr', attrs={ "class" : "row-2 even"}).findAll('td')
+ix = [0, 2]
+r1 = [r_text[i] for i in ix]
+strip = ['<td class="column-1">', '<td class="column-3"><br/>', '/td>']
+r = [r.replace('<td class="column-1">', '') for r in r1]
+
+
+col1 = soup1.findAll('td', attrs={ "class" : "column-1"})
+col1_descs = []
+for c in col1:
+    col1_descs.extend([c.text for c in col1])
+col1 = col1_descs[0:43]
+
+col3 = soup1.findAll('td', attrs={ "class" : "column-3"})
+col3_descs = []
+for c in col3:
+    #p_text = col3.find_all('br')
+    col3_descs.extend([c.text for c in col3])
+col3 = col3_descs[0:43]
+
+df = pd.DataFrame({'State':col1, 'Reopen date': col3})
+df['State'] = df['State'].str.rstrip('\n')
+df['State'] = df['State'].str.rstrip(' ')
+df['Reopen date'] = df['Reopen date'].str.rstrip('\n')
+df.to_csv('table.csv', index=False)
+
+
+table = soup1.findAll('tbody', attrs={ "class" : "row-hover"})
+r1_c1 = 
+td = soup1.find('tbody').find_all('td')
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
