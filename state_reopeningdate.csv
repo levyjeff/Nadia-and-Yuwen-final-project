@@ -2,7 +2,7 @@ state,policy_date
 Alabama,2020-05-15
 Alaska,2020-04-27
 Arizona,2020-05-15
-California,
+California,2020-05-04
 Colorado,2020-04-26
 Connecticut,2020-05-20
 Delaware,2020-05-31
@@ -43,3 +43,9 @@ Virginia,2020-05-29
 Washington,2020-05-31
 West Virginia,2020-05-04
 Wisconsin,2020-05-13
+Arkansas,2020-05-04
+Iowa,2020-06-01
+Nebraska,2020-06-01
+North Dakota,2020-05-01
+South Dakota,2020-04-28
+Wyoming,2020-04-30
