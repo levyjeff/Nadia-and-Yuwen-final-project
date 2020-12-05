@@ -13,7 +13,7 @@ import re
 
 head = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.193 Safari/537.36'}
 os.getcwd()
-path_with_os = os.path.expanduser('~\Documents\GitHub\Nadia-and-Yuwen-final-project')
+path_with_os = os.path.expanduser(r'~\Documents\GitHub\Nadia-and-Yuwen-final-project')
 
 
 # https://docs.google.com/document/u/1/d/e/2PACX-1vSXZCFCbIRiRDRC-SWyc36T0S0hjXxT9wZAGM4V01_xtbywLBEn0o_kgmfs0dMJ4VbpPh30j2ZFZ3TH/pub
