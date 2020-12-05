@@ -7,17 +7,43 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import numpy as np
 import os
+import us
+
+path = os.path.abspath(os.path.dirname(__file__))
+
+state = [state.name for state in us.states.STATES]
+state_e = [s.lower() for s in state]
+state_e = [s.replace(' ', '-') for s in state_e]
+
+states = {k:v for k,v in zip(state, state_e)}
+
+def get_text(elem):
+    base_url = r'https://www.huschblackwell.com/{}-state-by-state-covid-19-guidance'
+    head = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36'}
+    url = base_url.format(elem)
+   
+    response = requests.get(url, headers=head)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    divs = soup.findAll('div', attrs={ "class" : "wb-content"})
+     
+    p_descs = []
+    for div in divs:
+         p_text = div.find_all('p')
+         p_descs.extend([p.text for p in p_text])
+    p_descs = [p.replace('\xa0', ' ') for p in p_descs]
+    p_descs = [p.replace(':', '') for p in p_descs]
+    return p_descs
+
+text = {}
+for k,elem in states.items():
+    text[k] = get_text(elem)
+
+
 
 # I tried with one url first, haven't iterate over several urls
-path = os.path.abspath(os.path.dirname(__file__))
-urls = []
 url = r'https://www.huschblackwell.com/illinois-state-by-state-covid-19-guidance'
-head = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36'}
 
-resp = requests.get(url, headers=head)
-soup = BeautifulSoup(resp.text, 'html.parser')
-
-# reopen may be within li or p
+# reopen maybe within li or p
 # maybe not reopen but Phase 4
 def keyword_idx(self):
     idx = []
@@ -32,7 +58,6 @@ def keyword_idx(self):
     return idx
 
 # get the web content
-divs = soup.findAll('div', attrs={ "class" : "wb-content"})
 
 # Find the index of Phase 4 in p
 for div in divs:
@@ -74,8 +99,6 @@ for i in idx:
     p.append(p_descs[i])
     
 # stupid step: get the date from the max index in index_fin, that is the date for the state
-
-
 
 
 # Scrapping from NGA
