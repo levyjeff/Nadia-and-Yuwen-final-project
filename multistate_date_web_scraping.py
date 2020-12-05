@@ -7,9 +7,9 @@ import requests
 
 from bs4 import BeautifulSoup
 import pandas as pd
-import numpy as np
 import os
 import re
+import us
 
 head = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.193 Safari/537.36'}
 os.getcwd()
@@ -71,10 +71,33 @@ state_expire['expire_date'] = last_dates
 state_expire['expire_date'][16] = "May 31" 
 state_expire['expire_date'][31] = "Apr 30"     
 state_expire['expire_date'][40] = "May 29"         
-state_expire['expire_date'][3] = "Indefinite"  
+state_expire['expire_date'][3] = "May 4"  
 
 #keep only state and expire_date
 state_expire  = state_expire.drop('expire', 1)
 
+#we found some states are missing in our dataframe
+#get the us_state list
+us_state = [state.name for state in us.states.STATES]
+# find which states are missing in state_expire_multistate.csv
+missing_state = []
+for item in us_state:
+    if item not in state_expire['state'].tolist():
+        missing_state.append(item)
+
+missing_state_expire_date = ["May4", "Jun 1", "Jun 1", "May 1", "Apr 28", "Apr 30"]
+#Those are the dates that we manually get from website seperately
+#We tried to use NLP/keyword index, but it's not accurate and not efficient
+#All states have their own wording in giving out the orders
+
+missing_state_expire = pd.DataFrame(
+    {'state': missing_state,
+     'expire_date': missing_state_expire_date,
+    })
+
+state_expire = state_expire.append(missing_state_expire, ignore_index=True)
+
 #save to csv
 state_expire.to_csv(path_or_buf = os.path.join(path_with_os, 'state_expire_multistate.csv'),  index = False)
+
+
