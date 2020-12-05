@@ -1,8 +1,4 @@
 import requests
-
-# Web scrapping: reopening policy from https://www.huschblackwell.com/state-by-state-covid-19-guidance
-# Note to the link we we pick a state: https://www.huschblackwell.com/illinois-state-by-state-covid-19-guidance
-# state name is inserted after '/' before 'state' with '-'
 from bs4 import BeautifulSoup
 import pandas as pd
 import numpy as np
@@ -34,12 +30,13 @@ def get_text(elem):
     p_descs = [p.replace(':', '') for p in p_descs]
     return p_descs
 
+# Get text from all states
 text = {}
 for k,elem in states.items():
     text[k] = get_text(elem)
 
 
-
+# Getting index for date
 # I tried with one url first, haven't iterate over several urls
 url = r'https://www.huschblackwell.com/illinois-state-by-state-covid-19-guidance'
 
@@ -130,45 +127,3 @@ def get_table(col1, col2):
 table = get_table("column-1", "column-3")
 table.to_csv('table.csv', index=False)
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
