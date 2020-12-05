@@ -7,8 +7,8 @@ path = os.path.abspath(os.path.dirname(__file__))
 api = r'https://api.covidtracking.com/v1/states/daily.csv'
 
 def get_statement(api, fname, path):
-    response = requests.get(url)
-    assert(fname.endswith('.csv')), 'Incorrect file type in get_statement, expected csv, got: {}'.format(url)
+    response = requests.get(api)
+    assert(fname.endswith('.csv')), 'Incorrect file type in get_statement, expected csv, got: {}'.format(api)
     with open(os.path.join(path, fname), 'wb') as file:
         file.write(response.content)
 
