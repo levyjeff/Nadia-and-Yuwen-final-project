@@ -97,47 +97,36 @@ for l in p_descs['string']:
 # stay-at-home order expired, open, reopening, 
 # get text based on each id then do NLP, each div id = state, each has the same class
 
+
 # Scrapping table , we just need column 1 and 3
 # url https://www.nga.org/coronavirus-reopening-plans/
 nga = r'https://www.nga.org/coronavirus-reopening-plans/'       
 resp1 = requests.get(nga, headers=head)
 soup1 = BeautifulSoup(resp1.text, 'html.parser')
 
-# Get the content
-# It is inside <tr class="row-2 even"
-rows1 = soup1.findAll('tr', attrs={ "class" : "row-2 even"})
-r_text = soup1.find('tr', attrs={ "class" : "row-2 even"}).findAll('td')
-ix = [0, 2]
-r1 = [r_text[i] for i in ix]
-strip = ['<td class="column-1">', '<td class="column-3"><br/>', '/td>']
-r = [r.replace('<td class="column-1">', '') for r in r1]
+# Function for scrapping
+def get_table(col1, col2):
+    col1 = soup1.findAll('td', attrs={ "class" : col1})
+    col1_descs = []
+    for c in col1:
+        col1_descs.extend([c.text for c in col1])
+    col1 = col1_descs[0:43]
 
-
-col1 = soup1.findAll('td', attrs={ "class" : "column-1"})
-col1_descs = []
-for c in col1:
-    col1_descs.extend([c.text for c in col1])
-col1 = col1_descs[0:43]
-
-col3 = soup1.findAll('td', attrs={ "class" : "column-3"})
-col3_descs = []
-for c in col3:
-    #p_text = col3.find_all('br')
-    col3_descs.extend([c.text for c in col3])
-col3 = col3_descs[0:43]
-
-df = pd.DataFrame({'State':col1, 'Reopen date': col3})
-df['State'] = df['State'].str.rstrip('\n')
-df['State'] = df['State'].str.rstrip(' ')
-df['Reopen date'] = df['Reopen date'].str.rstrip('\n')
-df.to_csv('table.csv', index=False)
-
-
-table = soup1.findAll('tbody', attrs={ "class" : "row-hover"})
-r1_c1 = 
-td = soup1.find('tbody').find_all('td')
+    col2 = soup1.findAll('td', attrs={ "class" : col2})
+    col2_descs = []
+    for c in col2:
+        col2_descs.extend([c.text for c in col2])
+    col2 = col2_descs[0:43]
+    
+    df = pd.DataFrame({'State':col1, 'Reopen date': col2})
+    for col in df.columns:
+        df[col] = df[col].str.rstrip('\n')
+        df[col] = df[col].str.rstrip(' ')
         
-        
+    return df
+
+table = get_table("column-1", "column-3")
+table.to_csv('table.csv', index=False)
         
         
         
