@@ -6,6 +6,7 @@ import os
 import us
 
 path = os.path.abspath(os.path.dirname(__file__))
+head = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36'}
 
 state = [state.name for state in us.states.STATES]
 state_e = [s.lower() for s in state]
@@ -15,7 +16,6 @@ states = {k:v for k,v in zip(state, state_e)}
 
 def get_text(elem):
     base_url = r'https://www.huschblackwell.com/{}-state-by-state-covid-19-guidance'
-    head = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36'}
     url = base_url.format(elem)
    
     response = requests.get(url, headers=head)
@@ -57,18 +57,18 @@ def keyword_idx(self):
 # get the web content
 
 # Find the index of Phase 4 in p
-for div in divs:
-     idx_p = keyword_idx(div.find_all('p'))
-idx_p = list(set(idx_p))
-idx_p.sort()
+# for div in divs:
+#     idx_p = keyword_idx(div.find_all('p'))
+# idx_p = list(set(idx_p))
+# idx_p.sort()
      
 # P_desc return list
-p_descs = []
-for div in divs:
-    p_text = div.find_all('p')
-    p_descs.extend([p.text for p in p_text])
-p_descs = [s.replace('\xa0', ' ') for s in p_descs]
-p_descs = [s.replace(':', '') for s in p_descs]
+# p_descs = []
+# for div in divs:
+#    p_text = div.find_all('p')
+#    p_descs.extend([p.text for p in p_text])
+#p_descs = [s.replace('\xa0', ' ') for s in p_descs]
+#p_descs = [s.replace(':', '') for s in p_descs]
 
 # Get the index for each date
 idx_date = []
@@ -87,10 +87,11 @@ for n in idx_p:
 idx_fin = list(set(idx_date).intersection(set(idx_before)))
 idx_fin.sort()
         
-#concenate the index
+# concenate the index
 idx = idx_fin + idx_p
 idx.sort()
 
+# Checking how it goes
 p = []
 for i in idx:
     p.append(p_descs[i])
@@ -98,7 +99,7 @@ for i in idx:
 # stupid step: get the date from the max index in index_fin, that is the date for the state
 
 
-# Scrapping from NGA
+# Scrapping from NGA (in case needed)
 nga = r'https://www.nga.org/coronavirus-reopening-plans/'       
 resp1 = requests.get(nga, headers=head)
 soup1 = BeautifulSoup(resp1.text, 'html.parser')
