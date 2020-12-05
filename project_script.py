@@ -3,6 +3,9 @@ import requests
 import pandas as pd
 from datetime import datetime
 import datetime as date
+import numpy as np
+import us
+
 
 # Download the data from https://api.covidtracking.com
 path = os.path.abspath(os.path.dirname(__file__))
@@ -19,14 +22,24 @@ fname = []
 fname = api.split('/')[-1]
 if go_online:
     get_statement(api, fname, path)
-
+    
+# Read US Governor party csv data from github 
+us_party = pd.read_csv('https://raw.githubusercontent.com/CivilServiceUSA/us-governors/master/us-governors/data/us-governors.csv')
+us_party = us_party[['state_name', 'state_code', 'party']]
+us_party.to_csv('us_party.csv', index=False)    
+    
+# Create dataframe containing state_id    
+abbr = [state.abbr for state in us.states.STATES]
+state = [state.name for state in us.states.STATES]
+states = {k:v for k,v in zip(abbr, state)}
+states = pd.DataFrame(states.items(), columns=['state_id', 'state'])
+    
+# Compare table from NGA and Expire to get the latest reopening date
 files = [file for file in os.listdir(path) if file.endswith('csv')]
 keys = ['expire', 'nga', 'daily']
 
 files = {k:v for k,v in zip(keys, files)}
 
-
-# Compare table from NGA and Expire to get the latest reopening date
 dfs = []
 for k in files:
     if k in ['expire', 'nga']:
@@ -36,13 +49,17 @@ for k in files:
 df = dfs[0].merge(dfs[1], on=['state'], how='left', 
                   indicator='exists')
 
-df['Reopen date'] = pd.to_datetime(df['Reopen date'])
-#df['expire_date'] = df['expire_date'].map('{} 20'.format)
-#df['expire_date'] = df['expire_date'].astype('string')
-df['expire_date'] = df.expire_date.apply(lambda x: pd.to_datetime(x).strftime('%M %d')[0])
-
-for col in ['expire_date', 'Reopen date']:
-    df[col] = pd.to_datetime(df[col])
+df['expire_date'] = df['expire_date'].map('{} 20'.format)
     
+for col in ['expire_date', 'Reopen date']:
+    df[col] = pd.to_datetime(df[col], errors = 'coerce')
+
+    
+df['policy_date'] = np.where((df['Reopen date'] > df['expire_date']), df['Reopen date'], df['expire_date'])
+df = df[['state', 'policy_date']].drop_duplicates(subset=['state'])
+df.to_csv('state_reopeningdate.csv', index=False)
+
+# Open daily data, create new column state for abbreviation
+
     
 # Graphs
