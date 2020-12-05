@@ -6,6 +6,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import numpy as np
+import os
 
 # I tried with one url first, haven't iterate over several urls
 path = os.path.abspath(os.path.dirname(__file__))
@@ -18,13 +19,16 @@ soup = BeautifulSoup(resp.text, 'html.parser')
 
 # reopen may be within li or p
 # maybe not reopen but Phase 4
-idx = []
-def indices(self):
-    for i, elem in enumerate(self): #https://stackoverflow.com/questions/5466618/too-many-values-to-unpack-iterating-over-a-dict-key-string-value-list
-        if 'Phase 4' in elem.text:
-            idx.append(i)
-        elif 'phase 4' in elem.text:
-            idx.append(i)
+def keyword_idx(self):
+    idx = []
+    keyword = ['reopen', 'reopening', 'in-person', 'Phase 4']
+
+    for i, elem in enumerate(self):
+        for w in keyword:
+            if w in elem.text:
+                idx.append(i)
+            else:
+                pass
     return idx
 
 # get the web content
@@ -32,8 +36,9 @@ divs = soup.findAll('div', attrs={ "class" : "wb-content"})
 
 # Find the index of Phase 4 in p
 for div in divs:
-     idx_p = indices(div.find_all('p'))
-     idx_p.sort()
+     idx_p = keyword_idx(div.find_all('p'))
+idx_p = list(set(idx_p))
+idx_p.sort()
      
 # P_desc return list
 p_descs = []
@@ -42,64 +47,43 @@ for div in divs:
     p_descs.extend([p.text for p in p_text])
 p_descs = [s.replace('\xa0', ' ') for s in p_descs]
 p_descs = [s.replace(':', '') for s in p_descs]
-p_descs = p_descs.astype('string')
 
 # Get the index for each date
-for s in p_descs :
+idx_date = []
+for i, s in enumerate(p_descs):
    if len(s.split()) == 3:
-      print(s)
-
-# Work to get paragraph with phase 4, need to get the date -> still fail since the date is also inside <p>
-# Maybe use keyword to indicate that we want the date?
-
-import datetime as dt
-#p_descs['date'] = datetime.strptime(p_descs['text'],'%B %d, %Y')
-#p_descs['date'] = p_descs['date'].strftime('%Y-%m-%d')
-
-p_phase4 = []
-for i in idx_p:
-    p_phase4.append(p_descs[i-1])
- 
-# We might need to do NPL to get that the state moves into phase 4?
+      idx_date.append(i)
     
-# Try to put the words into a dataframe instead of list, or a dictionary?
-# Make a new column, containing different numbers at each date, then fill the rest of the rows with the same numbers
-# If Phase 4 is inside then, we keep the 1st row and the row in which the phrase is contained
-p_descs = pd.DataFrame()
-for div in divs:
-    p_descs['text'] = div.find_all('p')
+# What you want is getting the date before the announcement
+idx_before = []
+for n in idx_p:
+    idx_before.append(n-1)
+    idx_before.append(n-2)
+    idx_before.append(n-3)
 
-p_descs['string'] = [" ".join(map(str, l)) for l in p_descs['text']]
-# strip <strong> and :</strong>
-p_descs['string'] = p_descs['string'].str.lstrip('<strong>')
-p_descs['string'] = p_descs['string'].str.rstrip(': </strong>')
-p_descs['string'] = p_descs['string'].astype('string')
+# Keep only date index before the announcement
+idx_fin = list(set(idx_date).intersection(set(idx_before)))
+idx_fin.sort()
 
-date = pd.DataFrame(index=pd.date_range(start = dt.datetime(2020,1,1), end = dt.datetime.now(), freq='M'))
-date = date.index.to_series().apply(lambda x: dt.datetime.strftime(x, '%B %Y')).tolist()
-
-# Cannot use length for this to determine whether it is a date or not
-for l in p_descs['string']:
-    p_descs['len'] = len(l.split())
-
-for l in p_descs['string']:
-    if len(l.split()) == 3:
-        p_descs['date'] = 1
-    else:
-        p_descs['date'] = np.nan
+# How about only keeping the date right before
+for n,m in zip(idx_p, idx_date):
+    if m == n-1:
+        idx_date.remove(m)
         
+#concenate the index
+idx = idx_fin + idx_p
+idx.sort()
 
+p = []
+for i in idx:
+    p.append(p_descs[i])
     
-# Date has double [[]], can we use this to differentiate it from []? I don't think we can
-# get row index value if [[]] in the row
-
-# url with NPL https://www.cnn.com/interactive/2020/us/states-reopen-coronavirus-trnd/
-# stay-at-home order expired, open, reopening, 
-# get text based on each id then do NLP, each div id = state, each has the same class
+# stupid step: get the date from the max index in index_fin, that is the date for the state
 
 
-# Scrapping table , we just need column 1 and 3
-# url https://www.nga.org/coronavirus-reopening-plans/
+
+
+# Scrapping from NGA
 nga = r'https://www.nga.org/coronavirus-reopening-plans/'       
 resp1 = requests.get(nga, headers=head)
 soup1 = BeautifulSoup(resp1.text, 'html.parser')
