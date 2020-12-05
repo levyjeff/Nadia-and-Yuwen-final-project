@@ -64,11 +64,6 @@ for n in idx_p:
 # Keep only date index before the announcement
 idx_fin = list(set(idx_date).intersection(set(idx_before)))
 idx_fin.sort()
-
-# How about only keeping the date right before
-for n,m in zip(idx_p, idx_date):
-    if m == n-1:
-        idx_date.remove(m)
         
 #concenate the index
 idx = idx_fin + idx_p
