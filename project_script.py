@@ -120,7 +120,7 @@ df_overall = df_overall[df_overall['after_policy']==1].nlargest(25, 'new_case_af
 
 def bar_by_party(data, fname):
     fig, ax = plt.subplots(figsize=(15,8))
-    ax.set_title('Average Number of New Cases of 25 States with Highest Cases after Reopening', fontsize=16)
+    ax.set_title('Average Number of Daily Cases of 25 States with Highest Cases after Reopening', fontsize=16)
     ax.set_xlabel('Total Cases', fontsize=14)
     ax.set_ylabel('State', fontsize=14)
     y_pos = np.arange(len(df_overall['state_name']))
@@ -153,7 +153,13 @@ bar_by_party(df_overall, 'top25_states_highest_cases.png')
 # plot before and after
 # use mean policy date
 df_ba = df[['date', 'positive_by_date', 'death_by_date']].drop_duplicates()
-df_ba['new_case_by_date'] = df['positive_by_date'].diff(-1)
+df_ba['month'] = df_ba['date'].apply(lambda t: t.month)
+df_ba['new_case_by_date'] = df_ba['positive_by_date'].diff(-1)
+df_ba['positive_by_month'] = df_ba.groupby(['month'])['positive_by_date'].transform('mean')
+df_ba['death_by_month'] = df_ba.groupby(['month'])['death_by_date'].transform('mean')
+
+df_ba_month = df_ba[['month', 'positive_by_month', 'death_by_month']].drop_duplicates()
+df_ba['new_cases_by_month'] = df_ba.groupby(['month'])['positive_by_month'].diff(-1)
 
 # Inspired from: https://stackoverflow.com/questions/35599607/average-date-array-calculation
 mean_reopening = (np.array(df_reopening['policy_date'], dtype='datetime64[ns]')
@@ -161,21 +167,19 @@ mean_reopening = (np.array(df_reopening['policy_date'], dtype='datetime64[ns]')
                   .mean()
                   .astype('datetime64[ns]'))
 
-fig, ax = plt.subplots(figsize=(15,7))
-ax.set_title('Average Number of Covid-19 Daily Cases', fontsize=16)
-ax.set_xlabel('Date', fontsize=14)
-ax.set_ylabel('New Cases', fontsize=14)
-ax.bar('date', 'new_case_total', data = data, color='lightgray')
-dstart = datetime(2020,4,1)
-dend = datetime(2020,11,30)
-ax.set_xlim([dstart, dend])
-ax2 = ax.twinx()
-ax2 = sns.lineplot(x='date', y='new_case_mean_party', hue='party', data = data, palette=['r', 'b'])
-ax2.set_yticks([])
-ax2.set_ylabel('')
-legend = ax2.legend(loc='best')
-legend.texts[0].set_text('Political Party')
-plt.savefig(fname)
-plt.show()
+def plot_ba(data, col, fname):
+    fig, ax = plt.subplots(figsize=(15,7))
+    ax.set_title('Average Number of Covid-19 Daily Cases', fontsize=16)
+    ax.set_xlabel('Date', fontsize=14)
+    ax.set_ylabel('Number of Cases', fontsize=14)
+    ax.axvline(datetime(2020,5,16), color='b', linestyle='--')
+    #ax.bar('date', 'new_case_by_date', data = df_ba, color='lightgray')
+    dstart = datetime(2020,4,1)
+    dend = datetime(2020,11,30)
+    ax.set_xlim([dstart, dend])
+    ax = plt.scatter(data['date'].tolist(), data[col], 
+                 color='tab:orange', alpha=0.5, edgecolors='none')
+    plt.savefig(fname)
+    plt.show()
 
-
+plot_ba(df_ba, 'new_case_by_date', 'newcase_before_after.png')
