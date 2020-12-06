@@ -163,11 +163,12 @@ bar_by_party(df_overall, 'top25_states_highest_cases.png')
 # 3) Before and After estimation
 # Subset dataframe
 df_ba = df[['date', 'positive_by_date', 'death_by_date']].drop_duplicates()
-#df_ba['month'] = df_ba['date'].apply(lambda t: t.month)
 df_ba['month_year'] = pd.to_datetime(df_ba['date']).dt.to_period('M')
 df_ba['month_year'] = df_ba['month_year'].dt.strftime('%Y-%m-%d')
-
+df_ba['after'] = (df['date'] > mean_reopening).astype(int)
 df_ba['new_case_by_date'] = df_ba['positive_by_date'].diff(-1)
+df_ba['new_case_avg'] = df_ba.groupby(['after'])['new_case_by_date'].transform('mean')
+
 df_ba['positive_by_month'] = df_ba.groupby(['month_year'])['positive_by_date'].transform('mean')
 df_ba['death_by_month'] = df_ba.groupby(['month_year'])['death_by_date'].transform('mean')
 df_ba_month = df_ba[['month_year', 'positive_by_month', 'death_by_month']].drop_duplicates()
@@ -178,7 +179,6 @@ def plot_ba(data, col1, col2, title, fname):
     ax.set_xlabel('Date', fontsize=14)
     ax.set_ylabel('Number of Cases', fontsize=14)
     ax.axvline(datetime(2020,5,16), color='k', linestyle='--')
-    #ax.bar('date', 'new_case_by_date', data = df_ba, color='lightgray')
     dstart = datetime(2020,4,1)
     dend = datetime(2020,11,30)
     ax.set_xlim([dstart, dend])
