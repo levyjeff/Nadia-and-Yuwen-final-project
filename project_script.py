@@ -5,6 +5,7 @@ import numpy as np
 import us
 import matplotlib.pyplot as plt
 from matplotlib import colors
+import matplotlib.gridspec as gridspec
 import seaborn as sns
 from datetime import datetime
 
@@ -59,8 +60,8 @@ us_party.to_csv('us_party.csv', index=False)
 # Create dataframe containing state_id    
 abbr = [state.abbr for state in us.states.STATES]
 state = [state.name for state in us.states.STATES]
-states = {k:v for k,v in zip(abbr, state)}
-states = pd.DataFrame(states.items(), columns=['state_id', 'state'])
+states_dict = {k:v for k,v in zip(abbr, state)}
+states = pd.DataFrame(states_dict.items(), columns=['state_id', 'state'])
     
 # Open daily data, create new column state for abbreviation
 df_covid = pd.read_csv(files['daily'])
@@ -88,8 +89,10 @@ df['tot_avg'] = df.groupby(['date', 'party'])['positive'].transform('mean')
 df['new_cases'] = df.groupby(['state_name'])['positive'].diff(-1)
 df['new_case_mean'] = df.groupby(['date', 'party'])['new_cases'].transform('mean')
 df['new_cases_total'] = df.groupby(['date'])['new_cases'].transform('mean')
+df['after_policy'] = (df['date'] > df['policy_date']).astype(int)
+df['new_case_after'] = df.groupby(['state_name', 'after_policy'])['new_cases'].transform('mean')
 
-# Add bar chart for 
+# Add bar chart for average daily cases overall
 fig, ax = plt.subplots(figsize=(15,7))
 ax.set_title('Average Number of Covid-19 Daily Cases', fontsize=16)
 ax.set_xlabel('Date', fontsize=14)
@@ -99,24 +102,44 @@ dstart = datetime(2020,4,1)
 dend = datetime(2020,11,30)
 ax.set_xlim([dstart, dend])
 ax2 = ax.twinx()
-ax2 = sns.lineplot(x='date', y='new_case_mean', hue='party', data = df, palette=['b', 'r'])
+ax2 = sns.lineplot(x='date', y='new_case_mean', hue='party', data = df, palette=['r', 'b'])
+ax2.set_yticks([])
+ax2.set_ylabel('')
+
+# Try plot new_cases with vertical line
+# Change df_reopening to dictionary
+df_reopening = df_reopening.set_index('state')
+reopening_dict = df_reopening['policy_date'].to_dict()
+
+# filter top 5 states
+top5 = df[['state_name', 'new_case_after', 'after_policy']].drop_duplicates()
+print(top5[top5['after_policy']==1].nlargest(5, 'new_case_after'))
+top5_state = ['California', 'Texas', 'Florida', 'Illinois', 'Ohio']
+top5 = df.loc[df['state_name'].isin(top5_state)] 
 
 
 
-fig, ax1 = plt.subplots(figsize=(15,7))
-#ax1.set_title('Average Percipitation Percentage by Month', fontsize=16)
-ax1.set_xlabel('Date', fontsize=16)
-ax1.set_ylabel('Number of Cases', fontsize=16)
-ax2 = sns.barplot(x='date', 'new_cases_total', data = df, palette='summer')
-ax1.tick_params(axis='y')
-ax2 = ax1.twinx()
-ax2.set_ylabel('Number of Cases', fontsize=16)
-ax2 = sns.lineplot('date', 'new_case_mean', hue='party', data = df)
-ax2.tick_params(axis='y')
-plt.show()
+fig, ax1 = plt.subplots(figsize=(12,7))
+ax1.set_title('Average Number of Covid-19 Daily Cases', fontsize=16)
+ax1.set_xlabel('Date', fontsize=14)
+ax1.set_ylabel('New Cases', fontsize=14)
+ax1 = sns.lineplot(x='date', y='new_cases', data = top5, hue = 'state_name')
+ax1.axvline(datetime(2020,5,15), color="red", linestyle="--")
 
-sns.lineplot(x='year',             # https://seaborn.pydata.org/generated/seaborn.lineplot.html#seaborn.lineplot
-             y=var_name,
-             hue='inst_name',
-             data=df)
+
+
+
+
+fig = plt.figure()
+gs = gridspec.GridSpec(2, 2, hspace=0, wspace=0)
+(ax1, ax2), (ax3, ax4) = gs.subplots(sharex='col', sharey='row')
+fig.suptitle('Average Number of Covid-19 Daily Cases')
+y1 = top5[top5['state_name']=='California'][['new_cases', 'date']]
+ax1.plot('date', 'new_cases', data=y1)
+y2 = top5[top5['state_name']=='Texas'][['new_cases', 'date']]
+ax2.plot('date', 'new_cases', data=y2)
+y3 = top5[top5['state_name']=='Florida'][['new_cases', 'date']]
+ax3.plot('date', 'new_cases', data=y3)
+y4 = top5[top5['state_name']=='Illinois'][['new_cases', 'date']]
+ax4.plot('date', 'new_cases', data=y4)
 
