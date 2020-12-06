@@ -8,7 +8,25 @@
 
 ## Due: Sunday, December 6th by midnight on GitHub
 
-### Project Description:
+## Author：Nadia Fitriani & Yuwen Xiong
+
+## Results and Project explanation
+Please check the [PDF file](Write up.pdf) for our findings and the detailed explanation of the project
+
+## Coding Structure
+1. [Web scraping, downloading, merging and tidying data](downloading_and_webscraping.py)
+2. [Data nalysis and graph](analysis_and_graph.py)
+
+## Data
+The merged dataset is [data.csv](data.csv)
+All the rest of the datasets are interim results created by [downloading_and_webscraping.py](downloading_and_webscraping.py).
+
+## Graphs
+All graphs are results created by [analysis_and_graph.py](analysis_and_graph.py)
+
+
+
+### Project Description (Given by Jeff):
 The goal of this project is to showcase your knowledge of Python by applying it to a 
 research project of your own.  This is not a research methods course, so the quality of the
 research is ancillary to the quality of your programming.
