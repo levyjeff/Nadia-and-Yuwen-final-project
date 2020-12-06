@@ -48,7 +48,8 @@ def compare_date(key1, key2):
     df = df[['state', 'policy_date']].drop_duplicates(subset=['state'])
     return df
 
-df_reopening = compare_date('expire', 'nga')     
+df_reopening = compare_date('expire', 'nga')
+df_reopening['policy_date']=pd.to_datetime(df_reopening['policy_date'], format='%Y-%m-%d', errors = 'coerce') 
 df_reopening.to_csv('state_reopeningdate.csv', index=False)
     
 # Read US Governor party csv data from github 
@@ -64,7 +65,7 @@ states = pd.DataFrame(states_dict.items(), columns=['state_id', 'state'])
     
 # Open daily data, create new column state for abbreviation
 df_covid = pd.read_csv(files['daily'])
-df_covid = df_covid[['date', 'state', 'positive', 'probableCases', 'negative']]
+df_covid = df_covid[['date', 'state', 'positive', 'probableCases', 'negative', 'death']]
 df_covid['date']=pd.to_datetime(df_covid['date'], format='%Y%m%d', errors = 'coerce')
 
 df_covid = df_covid.merge(states, left_on=['state'], right_on=['state_id'], how='outer',
@@ -81,11 +82,12 @@ df.drop([col for col in df.columns if col in col_drop], axis=1, inplace=True)
 df.to_csv('data.csv', index=False)    
     
 # Creating Graphs
-# Set earliest(1 March) and latest(30 November) date for each state
 
 # 1) Average Comparison of The Number of Cases between Republican and Democrat States
 df['tot_avg_party'] = df.groupby(['date', 'party'])['positive'].transform('mean')
 df['new_cases'] = df.groupby(['state_name'])['positive'].diff(-1)
+df['positive_by_date'] = df.groupby(['date'])['positive'].transform('sum')
+df['death_by_date'] = df.groupby(['date'])['death'].transform('sum')
 df['new_case_mean_party'] = df.groupby(['date', 'party'])['new_cases'].transform('mean')
 df['new_case_total'] = df.groupby(['date'])['new_cases'].transform('mean')
 df['after_policy'] = (df['date'] > df['policy_date']).astype(int)
@@ -116,7 +118,6 @@ plot_cases_by_party(df, 'average_by_party.png')
 df_overall = df[['state_name', 'new_case_after', 'after_policy', 'party']].drop_duplicates()
 df_overall = df_overall[df_overall['after_policy']==1].nlargest(25, 'new_case_after')
 
-# Dictionary with key state
 def bar_by_party(data, fname):
     fig, ax = plt.subplots(figsize=(15,8))
     ax.set_title('Average Number of New Cases of 25 States with Highest Cases after Reopening', fontsize=16)
@@ -147,6 +148,34 @@ def bar_by_party(data, fname):
 
 bar_by_party(df_overall, 'top25_states_highest_cases.png')
 
-# 2) Average comparison of policy date between republican and democrat states
+# 3) Do something like event study (a simple one)
+# Estimate before and after
+# plot before and after
+# use mean policy date
+df_ba = df[['date', 'positive_by_date', 'death_by_date']].drop_duplicates()
+df_ba['new_case_by_date'] = df['positive_by_date'].diff(-1)
+
+# Inspired from: https://stackoverflow.com/questions/35599607/average-date-array-calculation
+mean_reopening = (np.array(df_reopening['policy_date'], dtype='datetime64[ns]')
+                  .view('i8')
+                  .mean()
+                  .astype('datetime64[ns]'))
+
+fig, ax = plt.subplots(figsize=(15,7))
+ax.set_title('Average Number of Covid-19 Daily Cases', fontsize=16)
+ax.set_xlabel('Date', fontsize=14)
+ax.set_ylabel('New Cases', fontsize=14)
+ax.bar('date', 'new_case_total', data = data, color='lightgray')
+dstart = datetime(2020,4,1)
+dend = datetime(2020,11,30)
+ax.set_xlim([dstart, dend])
+ax2 = ax.twinx()
+ax2 = sns.lineplot(x='date', y='new_case_mean_party', hue='party', data = data, palette=['r', 'b'])
+ax2.set_yticks([])
+ax2.set_ylabel('')
+legend = ax2.legend(loc='best')
+legend.texts[0].set_text('Political Party')
+plt.savefig(fname)
+plt.show()
 
 
