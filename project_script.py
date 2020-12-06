@@ -18,7 +18,7 @@ def get_statement(api, fname, path):
     with open(os.path.join(path, fname), 'wb') as file:
         file.write(response.content)
 
-go_online = True # Change True if the file(s) not yet in the folder (see files)
+go_online = False # Change True if the file(s) not yet in the folder (see files)
 fname = [] 
 fname = api.split('/')[-1]
 if go_online:
@@ -49,7 +49,7 @@ def compare_date(key1, key2):
     return df
 
 df_reopening = compare_date('expire', 'nga')
-df_reopening['policy_date']=pd.to_datetime(df_reopening['policy_date'], format='%Y-%m-%d', errors = 'coerce') 
+#df_reopening['policy_date']=pd.to_datetime(df_reopening['policy_date'], format='%Y-%m-%d', errors = 'coerce') 
 df_reopening.to_csv('state_reopeningdate.csv', index=False)
     
 # Read US Governor party csv data from github 
@@ -64,23 +64,28 @@ states_dict = {k:v for k,v in zip(abbr, state)}
 states = pd.DataFrame(states_dict.items(), columns=['state_id', 'state'])
     
 # Open daily data, create new column state for abbreviation
-df_covid = pd.read_csv(files['daily'])
-df_covid = df_covid[['date', 'state', 'positive', 'probableCases', 'negative', 'death']]
-df_covid['date']=pd.to_datetime(df_covid['date'], format='%Y%m%d', errors = 'coerce')
+def final_df(file1, data2, data3, data4):
+    df_covid = pd.read_csv(file1)
+    df_covid = df_covid[['date', 'state', 'positive', 'probableCases', 'negative', 'death']]
+    df_covid['date']=pd.to_datetime(df_covid['date'], format='%Y%m%d', errors = 'coerce')
 
-df_covid = df_covid.merge(states, left_on=['state'], right_on=['state_id'], how='outer',
+    df_covid = df_covid.merge(data2, left_on=['state'], right_on=['state_id'], how='outer',
                           indicator=True)
 
-# Merge with reopening policy date
-df = df_covid.merge(df_reopening, left_on=['state_y'], right_on=['state'], how='outer',
+    # Merge with reopening policy date
+    df = df_covid.merge(df_reopening, left_on=['state_y'], right_on=['state'], how='outer',
                           indicator=False)
 
-# Merge with governor's party 
-df = df.merge(us_party, left_on=['state_y'], right_on=['state_name'], how='left', indicator=False)
-col_drop = ['state_x', 'state_id', 'state_y', 'state', '_merge']
-df.drop([col for col in df.columns if col in col_drop], axis=1, inplace=True)
+    # Merge with governor's party 
+    df = df.merge(data4, left_on=['state_y'], right_on=['state_name'], how='left', indicator=False)
+    col_drop = ['state_x', 'state_id', 'state_y', 'state', '_merge']
+    df.drop([col for col in df.columns if col in col_drop], axis=1, inplace=True)
+    return df
+
+df = final_df(files['daily'], states, df_reopening, us_party)
 df.to_csv('data.csv', index=False)    
     
+
 # Creating Graphs
 
 # 1) Average Comparison of The Number of Cases between Republican and Democrat States
@@ -92,6 +97,12 @@ df['new_case_mean_party'] = df.groupby(['date', 'party'])['new_cases'].transform
 df['new_case_total'] = df.groupby(['date'])['new_cases'].transform('mean')
 df['after_policy'] = (df['date'] > df['policy_date']).astype(int)
 df['new_case_after'] = df.groupby(['state_name', 'after_policy'])['new_cases'].transform('mean')
+
+# Inspired from: https://stackoverflow.com/questions/35599607/average-date-array-calculation
+mean_reopening = (np.array(df_reopening['policy_date'], dtype='datetime64[ns]')
+                  .view('i8')
+                  .mean()
+                  .astype('datetime64[ns]'))
 
 # Add bar chart for average daily cases overall
 def plot_cases_by_party(data, fname):
@@ -107,6 +118,7 @@ def plot_cases_by_party(data, fname):
     ax2 = sns.lineplot(x='date', y='new_case_mean_party', hue='party', data = data, palette=['r', 'b'])
     ax2.set_yticks([])
     ax2.set_ylabel('')
+    ax2.axvline(datetime(2020,5,16), color='k', linestyle='--')
     legend = ax2.legend(loc='best')
     legend.texts[0].set_text('Political Party')
     plt.savefig(fname)
@@ -148,38 +160,31 @@ def bar_by_party(data, fname):
 
 bar_by_party(df_overall, 'top25_states_highest_cases.png')
 
-# 3) Do something like event study (a simple one)
-# Estimate before and after
-# plot before and after
-# use mean policy date
+# 3) Before and After estimation
+# Subset dataframe
 df_ba = df[['date', 'positive_by_date', 'death_by_date']].drop_duplicates()
-df_ba['month'] = df_ba['date'].apply(lambda t: t.month)
+#df_ba['month'] = df_ba['date'].apply(lambda t: t.month)
+df_ba['month_year'] = pd.to_datetime(df_ba['date']).dt.to_period('M')
+df_ba['month_year'] = df_ba['month_year'].dt.strftime('%Y-%m-%d')
+
 df_ba['new_case_by_date'] = df_ba['positive_by_date'].diff(-1)
-df_ba['positive_by_month'] = df_ba.groupby(['month'])['positive_by_date'].transform('mean')
-df_ba['death_by_month'] = df_ba.groupby(['month'])['death_by_date'].transform('mean')
+df_ba['positive_by_month'] = df_ba.groupby(['month_year'])['positive_by_date'].transform('mean')
+df_ba['death_by_month'] = df_ba.groupby(['month_year'])['death_by_date'].transform('mean')
+df_ba_month = df_ba[['month_year', 'positive_by_month', 'death_by_month']].drop_duplicates()
 
-df_ba_month = df_ba[['month', 'positive_by_month', 'death_by_month']].drop_duplicates()
-df_ba['new_cases_by_month'] = df_ba.groupby(['month'])['positive_by_month'].diff(-1)
-
-# Inspired from: https://stackoverflow.com/questions/35599607/average-date-array-calculation
-mean_reopening = (np.array(df_reopening['policy_date'], dtype='datetime64[ns]')
-                  .view('i8')
-                  .mean()
-                  .astype('datetime64[ns]'))
-
-def plot_ba(data, col, fname):
+def plot_ba(data, col1, col2, title, fname):
     fig, ax = plt.subplots(figsize=(15,7))
-    ax.set_title('Average Number of Covid-19 Daily Cases', fontsize=16)
+    ax.set_title(title, fontsize=16)
     ax.set_xlabel('Date', fontsize=14)
     ax.set_ylabel('Number of Cases', fontsize=14)
-    ax.axvline(datetime(2020,5,16), color='b', linestyle='--')
+    ax.axvline(datetime(2020,5,16), color='k', linestyle='--')
     #ax.bar('date', 'new_case_by_date', data = df_ba, color='lightgray')
     dstart = datetime(2020,4,1)
     dend = datetime(2020,11,30)
     ax.set_xlim([dstart, dend])
-    ax = plt.scatter(data['date'].tolist(), data[col], 
+    ax = plt.scatter(data[col1].tolist(), data[col2], 
                  color='tab:orange', alpha=0.5, edgecolors='none')
     plt.savefig(fname)
     plt.show()
 
-plot_ba(df_ba, 'new_case_by_date', 'newcase_before_after.png')
+plot_ba(df_ba, 'date', 'new_case_by_date', 'Average Number of Daily Cases', 'dailycase_before_after.png')
