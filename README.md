@@ -24,6 +24,16 @@ All the rest of the datasets are interim results created by [downloading_and_web
 ## Graphs
 All graphs are results created by [analysis_and_graph.py](analysis_and_graph.py)
 
+## Old files
+Old file folder contains all the datasets, graphs and codes that we created for this project. All of them are summarized into the two py files and regenerated. So if you want to take a look at all the intermediate process. You can go to that folder. But I think all codes are clearly shown in [downloading_and_webscraping.py](downloading_and_webscraping.py) and  [analysis_and_graph.py](analysis_and_graph.py).
+
+Thank you Jeff and all TA for this quarter!
+
+
+
+
+
+
 
 
 ### Project Description (Given by Jeff):
