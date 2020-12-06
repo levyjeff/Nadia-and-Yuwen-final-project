@@ -1,4 +1,5 @@
 date,positive,probableCases,negative,death,policy_date,state_name,state_code,party
+2020-12-05,34963.0,,1032268.0,143.0,2020-04-27,Alaska,AK,republican
 2020-12-04,34041.0,,1016328.0,142.0,2020-04-27,Alaska,AK,republican
 2020-12-03,33291.0,,1007214.0,130.0,2020-04-27,Alaska,AK,republican
 2020-12-02,32531.0,,992112.0,122.0,2020-04-27,Alaska,AK,republican
@@ -273,6 +274,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-08,,,14.0,0.0,2020-04-27,Alaska,AK,republican
 2020-03-07,,,12.0,0.0,2020-04-27,Alaska,AK,republican
 2020-03-06,,,8.0,0.0,2020-04-27,Alaska,AK,republican
+2020-12-05,267589.0,45785.0,1415357.0,3877.0,2020-05-15,Alabama,AL,republican
 2020-12-04,264199.0,45130.0,1407299.0,3831.0,2020-05-15,Alabama,AL,republican
 2020-12-03,260359.0,44421.0,1400010.0,3776.0,2020-05-15,Alabama,AL,republican
 2020-12-02,256828.0,43656.0,1390351.0,3711.0,2020-05-15,Alabama,AL,republican
@@ -546,6 +548,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-09,0.0,,,,2020-05-15,Alabama,AL,republican
 2020-03-08,0.0,,,,2020-05-15,Alabama,AL,republican
 2020-03-07,0.0,,,,2020-05-15,Alabama,AL,republican
+2020-12-05,169382.0,22671.0,1601735.0,2620.0,2020-05-04,Arkansas,AR,republican
 2020-12-04,167137.0,22227.0,1589776.0,2586.0,2020-05-04,Arkansas,AR,republican
 2020-12-03,164310.0,21588.0,1576679.0,2555.0,2020-05-04,Arkansas,AR,republican
 2020-12-02,161521.0,20816.0,1562561.0,2522.0,2020-05-04,Arkansas,AR,republican
@@ -820,6 +823,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-08,0.0,,6.0,,2020-05-04,Arkansas,AR,republican
 2020-03-07,0.0,,6.0,,2020-05-04,Arkansas,AR,republican
 2020-03-06,0.0,,6.0,,2020-05-04,Arkansas,AR,republican
+2020-12-05,0.0,,2140.0,0.0,,,,
 2020-12-04,0.0,,2140.0,0.0,,,,
 2020-12-03,0.0,,1988.0,0.0,,,,
 2020-12-02,0.0,,1988.0,0.0,,,,
@@ -1084,6 +1088,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-18,,,,0.0,,,,
 2020-03-17,,,,,,,,
 2020-03-16,,,,,,,,
+2020-12-05,22872.0,,704515.0,695.0,,,,
 2020-12-04,22480.0,,695762.0,693.0,,,,
 2020-12-03,22164.0,,687827.0,692.0,,,,
 2020-12-02,21842.0,,679643.0,690.0,,,,
@@ -1359,6 +1364,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-07,0.0,,8.0,,,,,
 2020-03-06,0.0,,8.0,,,,,
 2020-03-05,0.0,,6.0,,,,,
+2020-12-05,6977.0,132.0,79571.0,113.0,,,,
 2020-12-04,6959.0,132.0,79571.0,113.0,,,,
 2020-12-03,6942.0,140.0,79016.0,112.0,,,,
 2020-12-02,6920.0,138.0,78566.0,112.0,,,,
@@ -1623,6 +1629,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-18,8.0,,57.0,,,,,
 2020-03-17,5.0,,41.0,,,,,
 2020-03-16,3.0,,23.0,,,,,
+2020-12-05,106.0,,17010.0,2.0,,,,
 2020-12-04,106.0,,17010.0,2.0,,,,
 2020-12-03,106.0,,17010.0,2.0,,,,
 2020-12-02,106.0,,17010.0,2.0,,,,
@@ -1887,6 +1894,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-18,0.0,,,0.0,,,,
 2020-03-17,0.0,,,,,,,
 2020-03-16,0.0,,,,,,,
+2020-12-05,55532.0,1899.0,305972.0,1185.0,,,,
 2020-12-04,54597.0,1813.0,305972.0,1173.0,,,,
 2020-12-03,54105.0,1756.0,305972.0,1155.0,,,,
 2020-12-02,53708.0,1699.0,305972.0,1144.0,,,,
@@ -2151,6 +2159,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-18,5.0,,31.0,,,,,
 2020-03-17,5.0,,13.0,,,,,
 2020-03-16,5.0,,9.0,,,,,
+2020-12-05,1633.0,,27660.0,23.0,,,,
 2020-12-04,1613.0,,27502.0,23.0,,,,
 2020-12-03,1589.0,,27420.0,23.0,,,,
 2020-12-02,1563.0,,27247.0,23.0,,,,
@@ -2415,6 +2424,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-18,2.0,,,,,,,
 2020-03-17,2.0,,,,,,,
 2020-03-16,1.0,,,,,,,
+2020-12-05,358900.0,12139.0,2003152.0,6925.0,2020-05-15,Arizona,AZ,republican
 2020-12-04,352101.0,11634.0,1986277.0,6885.0,2020-05-15,Arizona,AZ,republican
 2020-12-03,346421.0,11173.0,1969836.0,6821.0,2020-05-15,Arizona,AZ,republican
 2020-12-02,340979.0,10662.0,1957887.0,6739.0,2020-05-15,Arizona,AZ,republican
@@ -2691,6 +2701,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-06,3.0,,33.0,,2020-05-15,Arizona,AZ,republican
 2020-03-05,2.0,,28.0,,2020-05-15,Arizona,AZ,republican
 2020-03-04,2.0,,27.0,,2020-05-15,Arizona,AZ,republican
+2020-12-05,1311625.0,,23590350.0,19791.0,2020-05-04,California,CA,democrat
 2020-12-04,1286557.0,,23388921.0,19582.0,2020-05-04,California,CA,democrat
 2020-12-03,1264539.0,,23210103.0,19437.0,2020-05-04,California,CA,democrat
 2020-12-02,1245948.0,,23053178.0,19324.0,2020-05-04,California,CA,democrat
@@ -2967,6 +2978,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-06,60.0,,462.0,,2020-05-04,California,CA,democrat
 2020-03-05,53.0,,462.0,,2020-05-04,California,CA,democrat
 2020-03-04,53.0,,462.0,,2020-05-04,California,CA,democrat
+2020-12-05,257347.0,11014.0,1574219.0,2724.0,2020-04-26,Colorado,CO,democrat
 2020-12-04,252222.0,10797.0,1574219.0,2724.0,2020-04-26,Colorado,CO,democrat
 2020-12-03,247209.0,10688.0,1560856.0,2716.0,2020-04-26,Colorado,CO,democrat
 2020-12-02,241172.0,10467.0,1548678.0,2708.0,2020-04-26,Colorado,CO,democrat
@@ -3243,6 +3255,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-06,8.0,,55.0,,2020-04-26,Colorado,CO,democrat
 2020-03-05,2.0,,46.0,,2020-04-26,Colorado,CO,democrat
 2020-03-04,2.0,,19.0,,2020-04-26,Colorado,CO,democrat
+2020-12-05,127715.0,8131.0,3294383.0,5146.0,2020-05-20,Connecticut,CT,democrat
 2020-12-04,127715.0,8131.0,3294383.0,5146.0,2020-05-20,Connecticut,CT,democrat
 2020-12-03,126177.0,7986.0,3267936.0,5111.0,2020-05-20,Connecticut,CT,democrat
 2020-12-02,121426.0,7958.0,3206014.0,5091.0,2020-05-20,Connecticut,CT,democrat
@@ -3516,6 +3529,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-09,1.0,,46.0,,2020-05-20,Connecticut,CT,democrat
 2020-03-08,1.0,,29.0,,2020-05-20,Connecticut,CT,democrat
 2020-03-07,0.0,,,,2020-05-20,Connecticut,CT,democrat
+2020-12-05,39096.0,1441.0,398514.0,782.0,2020-05-31,Delaware,DE,democrat
 2020-12-04,38398.0,1412.0,396669.0,782.0,2020-05-31,Delaware,DE,democrat
 2020-12-03,37456.0,1405.0,394304.0,779.0,2020-05-31,Delaware,DE,democrat
 2020-12-02,36698.0,1398.0,391835.0,779.0,2020-05-31,Delaware,DE,democrat
@@ -3790,6 +3804,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-08,0.0,,10.0,0.0,2020-05-31,Delaware,DE,democrat
 2020-03-07,0.0,,10.0,,2020-05-31,Delaware,DE,democrat
 2020-03-06,0.0,,10.0,,2020-05-31,Delaware,DE,democrat
+2020-12-05,1032552.0,99027.0,6464040.0,19327.0,2020-05-04,Florida,FL,republican
 2020-12-04,1022354.0,96513.0,6421830.0,19236.0,2020-05-04,Florida,FL,republican
 2020-12-03,1012456.0,94138.0,6376281.0,19112.0,2020-05-04,Florida,FL,republican
 2020-12-02,1001800.0,91045.0,6336387.0,19012.0,2020-05-04,Florida,FL,republican
@@ -4101,6 +4116,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-01-31,0.0,,,,2020-05-04,Florida,FL,republican
 2020-01-30,0.0,,,,2020-05-04,Florida,FL,republican
 2020-01-29,0.0,,,,2020-05-04,Florida,FL,republican
+2020-12-05,442017.0,,4024183.0,9793.0,2020-04-30,Georgia,GA,republican
 2020-12-04,438300.0,,3996720.0,9725.0,2020-04-30,Georgia,GA,republican
 2020-12-03,433353.0,,3963312.0,9648.0,2020-04-30,Georgia,GA,republican
 2020-12-02,428980.0,,3933984.0,9567.0,2020-04-30,Georgia,GA,republican
@@ -4377,6 +4393,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-06,2.0,,,,2020-04-30,Georgia,GA,republican
 2020-03-05,2.0,,,,2020-04-30,Georgia,GA,republican
 2020-03-04,2.0,,,,2020-04-30,Georgia,GA,republican
+2020-12-05,18738.0,315.0,295153.0,261.0,2020-05-31,Hawaii,HI,democrat
 2020-12-04,18605.0,315.0,295153.0,256.0,2020-05-31,Hawaii,HI,democrat
 2020-12-03,18484.0,298.0,295153.0,246.0,2020-05-31,Hawaii,HI,democrat
 2020-12-02,18342.0,298.0,295153.0,244.0,2020-05-31,Hawaii,HI,democrat
@@ -4653,6 +4670,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-06,,,,,2020-05-31,Hawaii,HI,democrat
 2020-03-05,,,,,2020-05-31,Hawaii,HI,democrat
 2020-03-04,,,,,2020-05-31,Hawaii,HI,democrat
+2020-12-05,211891.0,,882611.0,2667.0,2020-06-01,Iowa,IA,republican
 2020-12-04,210236.0,,879325.0,2605.0,2020-06-01,Iowa,IA,republican
 2020-12-03,207969.0,,875516.0,2522.0,2020-06-01,Iowa,IA,republican
 2020-12-02,205773.0,,872256.0,2449.0,2020-06-01,Iowa,IA,republican
@@ -4927,6 +4945,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-08,0.0,,15.0,,2020-06-01,Iowa,IA,republican
 2020-03-07,0.0,,15.0,,2020-06-01,Iowa,IA,republican
 2020-03-06,0.0,,15.0,,2020-06-01,Iowa,IA,republican
+2020-12-05,108366.0,17123.0,396217.0,1032.0,2020-05-01,Idaho,ID,republican
 2020-12-04,106455.0,16716.0,394453.0,1014.0,2020-05-01,Idaho,ID,republican
 2020-12-03,104734.0,16309.0,392275.0,991.0,2020-05-01,Idaho,ID,republican
 2020-12-02,103305.0,15886.0,389829.0,960.0,2020-05-01,Idaho,ID,republican
@@ -5200,6 +5219,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-09,0.0,,41.0,,2020-05-01,Idaho,ID,republican
 2020-03-08,0.0,,27.0,,2020-05-01,Idaho,ID,republican
 2020-03-07,0.0,,27.0,,2020-05-01,Idaho,ID,republican
+2020-12-05,779975.0,6259.0,10241701.0,14017.0,2020-05-30,Illinois,IL,democrat
 2020-12-04,770088.0,6259.0,10148910.0,13782.0,2020-05-30,Illinois,IL,democrat
 2020-12-03,759562.0,6259.0,10046802.0,13625.0,2020-05-30,Illinois,IL,democrat
 2020-12-02,748603.0,6259.0,9950983.0,13397.0,2020-05-30,Illinois,IL,democrat
@@ -5476,6 +5496,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-06,5.0,,180.0,,2020-05-30,Illinois,IL,democrat
 2020-03-05,5.0,,165.0,,2020-05-30,Illinois,IL,democrat
 2020-03-04,4.0,,124.0,,2020-05-30,Illinois,IL,democrat
+2020-12-05,375019.0,,1917159.0,6207.0,2020-05-04,Indiana,IN,republican
 2020-12-04,367329.0,,1904853.0,6122.0,2020-05-04,Indiana,IN,republican
 2020-12-03,359430.0,,1893434.0,6033.0,2020-05-04,Indiana,IN,republican
 2020-12-02,350970.0,,1881132.0,5973.0,2020-05-04,Indiana,IN,republican
@@ -5758,6 +5779,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-02-29,,,,,2020-05-04,Indiana,IN,republican
 2020-02-28,,,,,2020-05-04,Indiana,IN,republican
 2020-02-27,,,,,2020-05-04,Indiana,IN,republican
+2020-12-05,168295.0,,676891.0,1786.0,2020-05-04,Kansas,KS,democrat
 2020-12-04,168295.0,,676891.0,1786.0,2020-05-04,Kansas,KS,democrat
 2020-12-03,162061.0,,669121.0,1679.0,2020-05-04,Kansas,KS,democrat
 2020-12-02,162061.0,,669121.0,1679.0,2020-05-04,Kansas,KS,democrat
@@ -6032,6 +6054,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-08,1.0,,11.0,,2020-05-04,Kansas,KS,democrat
 2020-03-07,0.0,,11.0,,2020-05-04,Kansas,KS,democrat
 2020-03-06,0.0,,4.0,,2020-05-04,Kansas,KS,democrat
+2020-12-05,198065.0,34603.0,2568543.0,2062.0,2020-06-29,Kentucky,KY,republican
 2020-12-04,194193.0,34027.0,2539515.0,2039.0,2020-06-29,Kentucky,KY,republican
 2020-12-03,190601.0,33282.0,2530843.0,2014.0,2020-06-29,Kentucky,KY,republican
 2020-12-02,186765.0,32505.0,2465549.0,1980.0,2020-06-29,Kentucky,KY,republican
@@ -6306,6 +6329,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-08,1.0,,13.0,,2020-06-29,Kentucky,KY,republican
 2020-03-07,1.0,,9.0,,2020-06-29,Kentucky,KY,republican
 2020-03-06,0.0,,7.0,,2020-06-29,Kentucky,KY,republican
+2020-12-05,247177.0,14698.0,3319357.0,6548.0,2020-05-15,Louisiana,LA,democrat
 2020-12-04,247177.0,14698.0,3319357.0,6548.0,2020-05-15,Louisiana,LA,democrat
 2020-12-03,244078.0,14049.0,3297823.0,6524.0,2020-05-15,Louisiana,LA,democrat
 2020-12-02,241335.0,13555.0,3277164.0,6501.0,2020-05-15,Louisiana,LA,democrat
@@ -6579,6 +6603,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-09,1.0,,5.0,,2020-05-15,Louisiana,LA,democrat
 2020-03-08,0.0,,5.0,,2020-05-15,Louisiana,LA,democrat
 2020-03-07,0.0,,,,2020-05-15,Louisiana,LA,democrat
+2020-12-05,252017.0,9205.0,3230907.0,10953.0,2020-05-18,Massachusetts,MA,republican
 2020-12-04,246398.0,8942.0,3207957.0,10910.0,2020-05-18,Massachusetts,MA,republican
 2020-12-03,240907.0,8643.0,3186939.0,10874.0,2020-05-18,Massachusetts,MA,republican
 2020-12-02,234232.0,8445.0,3161191.0,10824.0,2020-05-18,Massachusetts,MA,republican
@@ -6897,6 +6922,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-01-24,,,,,2020-05-18,Massachusetts,MA,republican
 2020-01-23,,,,,2020-05-18,Massachusetts,MA,republican
 2020-01-22,,,,,2020-05-18,Massachusetts,MA,republican
+2020-12-05,212384.0,,2210796.0,4820.0,2020-05-15,Maryland,MD,republican
 2020-12-04,209191.0,,2194096.0,4790.0,2020-05-15,Maryland,MD,republican
 2020-12-03,205399.0,,2177942.0,4764.0,2020-05-15,Maryland,MD,republican
 2020-12-02,203355.0,,2168003.0,4715.0,2020-05-15,Maryland,MD,republican
@@ -7172,6 +7198,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-07,3.0,,41.0,,2020-05-15,Maryland,MD,republican
 2020-03-06,3.0,,26.0,,2020-05-15,Maryland,MD,republican
 2020-03-05,0.0,,17.0,,2020-05-15,Maryland,MD,republican
+2020-12-05,13127.0,1487.0,900832.0,227.0,2020-05-31,Maine,ME,democrat
 2020-12-04,12844.0,1454.0,900832.0,224.0,2020-05-31,Maine,ME,democrat
 2020-12-03,12554.0,1403.0,889282.0,220.0,2020-05-31,Maine,ME,democrat
 2020-12-02,12208.0,1338.0,880133.0,218.0,2020-05-31,Maine,ME,democrat
@@ -7445,6 +7472,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-09,0.0,,1.0,,2020-05-31,Maine,ME,democrat
 2020-03-08,0.0,,1.0,,2020-05-31,Maine,ME,democrat
 2020-03-07,0.0,,1.0,,2020-05-31,Maine,ME,democrat
+2020-12-05,426576.0,31540.0,6538482.0,10321.0,2020-06-01,Michigan,MI,democrat
 2020-12-04,420268.0,31236.0,6479892.0,10117.0,2020-06-01,Michigan,MI,democrat
 2020-12-03,410843.0,30500.0,6420956.0,10035.0,2020-06-01,Michigan,MI,democrat
 2020-12-02,402886.0,29689.0,6359136.0,9842.0,2020-06-01,Michigan,MI,democrat
@@ -7724,6 +7752,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-03,50.0,0.0,,,2020-06-01,Michigan,MI,democrat
 2020-03-02,27.0,0.0,,,2020-06-01,Michigan,MI,democrat
 2020-03-01,14.0,0.0,,,2020-06-01,Michigan,MI,democrat
+2020-12-05,345281.0,8228.0,2281378.0,3920.0,2020-05-19,Minnesota,MN,democrat
 2020-12-04,338973.0,7834.0,2269217.0,3845.0,2020-05-19,Minnesota,MN,democrat
 2020-12-03,333626.0,7562.0,2250748.0,3784.0,2020-05-19,Minnesota,MN,democrat
 2020-12-02,327477.0,7176.0,2236442.0,3692.0,2020-05-19,Minnesota,MN,democrat
@@ -7998,6 +8027,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-08,2.0,,48.0,,2020-05-19,Minnesota,MN,democrat
 2020-03-07,2.0,,48.0,,2020-05-19,Minnesota,MN,democrat
 2020-03-06,1.0,,36.0,,2020-05-19,Minnesota,MN,democrat
+2020-12-05,318422.0,,1537568.0,4181.0,2020-05-04,Missouri,MO,republican
 2020-12-04,313421.0,,1530641.0,4122.0,2020-05-04,Missouri,MO,republican
 2020-12-03,309368.0,,1525036.0,4102.0,2020-05-04,Missouri,MO,republican
 2020-12-02,305370.0,,1520005.0,4043.0,2020-05-04,Missouri,MO,republican
@@ -8271,6 +8301,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-09,1.0,,,,2020-05-04,Missouri,MO,republican
 2020-03-08,1.0,,,,2020-05-04,Missouri,MO,republican
 2020-03-07,0.0,,,,2020-05-04,Missouri,MO,republican
+2020-12-05,163458.0,36707.0,982395.0,3949.0,2020-04-27,Mississippi,MS,republican
 2020-12-04,161516.0,35651.0,982395.0,3916.0,2020-04-27,Mississippi,MS,republican
 2020-12-03,159036.0,34343.0,982395.0,3879.0,2020-04-27,Mississippi,MS,republican
 2020-12-02,156868.0,33122.0,982395.0,3851.0,2020-04-27,Mississippi,MS,republican
@@ -8544,6 +8575,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-09,0.0,,,,2020-04-27,Mississippi,MS,republican
 2020-03-08,0.0,,,,2020-04-27,Mississippi,MS,republican
 2020-03-07,0.0,,,,2020-04-27,Mississippi,MS,republican
+2020-12-05,67069.0,,615514.0,734.0,2020-04-26,Montana,MT,democrat
 2020-12-04,66436.0,,608826.0,727.0,2020-04-26,Montana,MT,democrat
 2020-12-03,65122.0,,603959.0,722.0,2020-04-26,Montana,MT,democrat
 2020-12-02,64340.0,,599241.0,713.0,2020-04-26,Montana,MT,democrat
@@ -8817,6 +8849,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-09,0.0,,11.0,,2020-04-26,Montana,MT,democrat
 2020-03-08,0.0,,11.0,,2020-04-26,Montana,MT,democrat
 2020-03-07,0.0,,11.0,,2020-04-26,Montana,MT,democrat
+2020-12-05,388552.0,24854.0,5158062.0,5516.0,2020-05-22,North Carolina,NC,democrat
 2020-12-04,382534.0,24067.0,5102753.0,5467.0,2020-05-22,North Carolina,NC,democrat
 2020-12-03,377231.0,23265.0,5055468.0,5410.0,2020-05-22,North Carolina,NC,democrat
 2020-12-02,371594.0,22314.0,5006410.0,5366.0,2020-05-22,North Carolina,NC,democrat
@@ -9093,6 +9126,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-06,2.0,,,,2020-05-22,North Carolina,NC,democrat
 2020-03-05,1.0,,,,2020-05-22,North Carolina,NC,democrat
 2020-03-04,1.0,,,,2020-05-22,North Carolina,NC,democrat
+2020-12-05,82504.0,,274014.0,1013.0,2020-05-01,North Dakota,ND,republican
 2020-12-04,81949.0,,273247.0,995.0,2020-05-01,North Dakota,ND,republican
 2020-12-03,81105.0,,272578.0,983.0,2020-05-01,North Dakota,ND,republican
 2020-12-02,80135.0,,271517.0,972.0,2020-05-01,North Dakota,ND,republican
@@ -9366,6 +9400,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-09,,,0.0,,2020-05-01,North Dakota,ND,republican
 2020-03-08,,,0.0,,2020-05-01,North Dakota,ND,republican
 2020-03-07,,,0.0,,2020-05-01,North Dakota,ND,republican
+2020-12-05,136325.0,,625554.0,1186.0,2020-06-01,Nebraska,NE,republican
 2020-12-04,134710.0,,623122.0,1159.0,2020-06-01,Nebraska,NE,republican
 2020-12-03,132530.0,,620451.0,1128.0,2020-06-01,Nebraska,NE,republican
 2020-12-02,130194.0,,618172.0,1080.0,2020-06-01,Nebraska,NE,republican
@@ -9660,6 +9695,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-02-17,,,,,2020-06-01,Nebraska,NE,republican
 2020-02-16,,,,,2020-06-01,Nebraska,NE,republican
 2020-02-15,,,,,2020-06-01,Nebraska,NE,republican
+2020-12-05,24138.0,,413415.0,559.0,2020-06-15,New Hampshire,NH,republican
 2020-12-04,23690.0,,410074.0,552.0,2020-06-15,New Hampshire,NH,republican
 2020-12-03,22925.0,,408102.0,544.0,2020-06-15,New Hampshire,NH,republican
 2020-12-02,22332.0,,405484.0,537.0,2020-06-15,New Hampshire,NH,republican
@@ -9936,6 +9972,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-06,2.0,,20.0,,2020-06-15,New Hampshire,NH,republican
 2020-03-05,2.0,,16.0,,2020-06-15,New Hampshire,NH,republican
 2020-03-04,2.0,,10.0,,2020-06-15,New Hampshire,NH,republican
+2020-12-05,361986.0,,5918797.0,17306.0,2020-06-09,New Jersey,NJ,democrat
 2020-12-04,356662.0,,5825837.0,17255.0,2020-06-09,New Jersey,NJ,democrat
 2020-12-03,350999.0,,5825837.0,17209.0,2020-06-09,New Jersey,NJ,democrat
 2020-12-02,346206.0,,5787381.0,17145.0,2020-06-09,New Jersey,NJ,democrat
@@ -10235,6 +10272,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-02-12,,,,0.0,2020-06-09,New Jersey,NJ,democrat
 2020-02-11,,,,0.0,2020-06-09,New Jersey,NJ,democrat
 2020-02-10,,,,0.0,2020-06-09,New Jersey,NJ,democrat
+2020-12-05,106856.0,,1528061.0,1738.0,2020-06-30,New Mexico,NM,democrat
 2020-12-04,104935.0,,1515448.0,1706.0,2020-06-30,New Mexico,NM,democrat
 2020-12-03,102862.0,,1502052.0,1673.0,2020-06-30,New Mexico,NM,democrat
 2020-12-02,100963.0,,1491259.0,1629.0,2020-06-30,New Mexico,NM,democrat
@@ -10510,6 +10548,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-07,0.0,,48.0,,2020-06-30,New Mexico,NM,democrat
 2020-03-06,0.0,,48.0,,2020-06-30,New Mexico,NM,democrat
 2020-03-05,0.0,,16.0,,2020-06-30,New Mexico,NM,democrat
+2020-12-05,165628.0,,849268.0,2301.0,2020-05-15,Nevada,NV,democrat
 2020-12-04,162434.0,,842221.0,2272.0,2020-05-15,Nevada,NV,democrat
 2020-12-03,159532.0,,839656.0,2249.0,2020-05-15,Nevada,NV,democrat
 2020-12-02,156996.0,,834431.0,2201.0,2020-05-15,Nevada,NV,democrat
@@ -10785,6 +10824,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-07,4.0,,14.0,0.0,2020-05-15,Nevada,NV,democrat
 2020-03-06,3.0,,14.0,0.0,2020-05-15,Nevada,NV,democrat
 2020-03-05,1.0,,14.0,0.0,2020-05-15,Nevada,NV,democrat
+2020-12-05,696125.0,,19692737.0,27089.0,2020-05-28,New York,NY,democrat
 2020-12-04,685364.0,,19488097.0,27017.0,2020-05-28,New York,NY,democrat
 2020-12-03,674093.0,,19291071.0,26955.0,2020-05-28,New York,NY,democrat
 2020-12-02,664238.0,,19097486.0,26889.0,2020-05-28,New York,NY,democrat
@@ -11063,6 +11103,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-04,1.0,,9.0,,2020-05-28,New York,NY,democrat
 2020-03-03,1.0,,0.0,,2020-05-28,New York,NY,democrat
 2020-03-02,0.0,,,,2020-05-28,New York,NY,democrat
+2020-12-05,467432.0,24973.0,5949233.0,6946.0,2020-05-20,Ohio,OH,republican
 2020-12-04,456963.0,24639.0,5892479.0,6882.0,2020-05-20,Ohio,OH,republican
 2020-12-03,446849.0,24001.0,5823939.0,6753.0,2020-05-20,Ohio,OH,republican
 2020-12-02,437928.0,23713.0,5779816.0,6671.0,2020-05-20,Ohio,OH,republican
@@ -11338,6 +11379,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-07,0.0,,9.0,,2020-05-20,Ohio,OH,republican
 2020-03-06,0.0,,8.0,,2020-05-20,Ohio,OH,republican
 2020-03-05,0.0,,7.0,,2020-05-20,Ohio,OH,republican
+2020-12-05,213245.0,,2008829.0,1874.0,2020-04-30,Oklahoma,OK,republican
 2020-12-04,208875.0,,1982769.0,1860.0,2020-04-30,Oklahoma,OK,republican
 2020-12-03,204048.0,,1957441.0,1836.0,2020-04-30,Oklahoma,OK,republican
 2020-12-02,202341.0,,1940738.0,1812.0,2020-04-30,Oklahoma,OK,republican
@@ -11611,6 +11653,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-09,1.0,,8.0,,2020-04-30,Oklahoma,OK,republican
 2020-03-08,1.0,,8.0,,2020-04-30,Oklahoma,OK,republican
 2020-03-07,1.0,,,,2020-04-30,Oklahoma,OK,republican
+2020-12-05,83243.0,3531.0,2005617.0,1027.0,2020-06-19,Oregon,OR,democrat
 2020-12-04,81437.0,3531.0,2005617.0,1003.0,2020-06-19,Oregon,OR,democrat
 2020-12-03,79263.0,3531.0,1964061.0,973.0,2020-06-19,Oregon,OR,democrat
 2020-12-02,78160.0,3531.0,1943782.0,953.0,2020-06-19,Oregon,OR,democrat
@@ -11887,6 +11930,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-06,3.0,,64.0,,2020-06-19,Oregon,OR,democrat
 2020-03-05,3.0,,45.0,,2020-06-19,Oregon,OR,democrat
 2020-03-04,3.0,,29.0,,2020-06-19,Oregon,OR,democrat
+2020-12-05,411484.0,31291.0,2911640.0,11262.0,2020-06-04,Pennsylvania,PA,democrat
 2020-12-04,398600.0,29089.0,2893321.0,11113.0,2020-06-04,Pennsylvania,PA,democrat
 2020-12-03,386837.0,28212.0,2872557.0,10944.0,2020-06-04,Pennsylvania,PA,democrat
 2020-12-02,375431.0,27388.0,2852624.0,10757.0,2020-06-04,Pennsylvania,PA,democrat
@@ -12161,6 +12205,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-08,6.0,,,,2020-06-04,Pennsylvania,PA,democrat
 2020-03-07,4.0,,,,2020-06-04,Pennsylvania,PA,democrat
 2020-03-06,2.0,,,,2020-06-04,Pennsylvania,PA,democrat
+2020-12-05,62137.0,,482922.0,1413.0,2020-05-08,Rhode Island,RI,democrat
 2020-12-04,62137.0,,482922.0,1413.0,2020-05-08,Rhode Island,RI,democrat
 2020-12-03,60722.0,,480754.0,1400.0,2020-05-08,Rhode Island,RI,democrat
 2020-12-02,59005.0,,477901.0,1391.0,2020-05-08,Rhode Island,RI,democrat
@@ -12440,6 +12485,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-03,2.0,,5.0,,2020-05-08,Rhode Island,RI,democrat
 2020-03-02,2.0,,3.0,,2020-05-08,Rhode Island,RI,democrat
 2020-03-01,2.0,,2.0,,2020-05-08,Rhode Island,RI,democrat
+2020-12-05,229235.0,15440.0,2274686.0,4517.0,2020-05-04,South Carolina,SC,republican
 2020-12-04,226013.0,15018.0,2248886.0,4496.0,2020-05-04,South Carolina,SC,republican
 2020-12-03,223063.0,14628.0,2226037.0,4466.0,2020-05-04,South Carolina,SC,republican
 2020-12-02,220835.0,14182.0,2212066.0,4444.0,2020-05-04,South Carolina,SC,republican
@@ -12716,6 +12762,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-06,0.0,,5.0,,2020-05-04,South Carolina,SC,republican
 2020-03-05,0.0,,5.0,,2020-05-04,South Carolina,SC,republican
 2020-03-04,0.0,,5.0,,2020-05-04,South Carolina,SC,republican
+2020-12-05,85304.0,6392.0,253065.0,1091.0,2020-04-28,South Dakota,SD,republican
 2020-12-04,84398.0,6245.0,252114.0,1064.0,2020-04-28,South Dakota,SD,republican
 2020-12-03,83348.0,6087.0,251349.0,1033.0,2020-04-28,South Dakota,SD,republican
 2020-12-02,82203.0,5765.0,250337.0,995.0,2020-04-28,South Dakota,SD,republican
@@ -12989,6 +13036,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-09,0.0,,5.0,,2020-04-28,South Dakota,SD,republican
 2020-03-08,0.0,,5.0,,2020-04-28,South Dakota,SD,republican
 2020-03-07,0.0,,5.0,,2020-04-28,South Dakota,SD,republican
+2020-12-05,397522.0,33545.0,4277534.0,4905.0,2020-05-01,Tennessee,TN,republican
 2020-12-04,392608.0,32407.0,4258736.0,4876.0,2020-05-01,Tennessee,TN,republican
 2020-12-03,388252.0,31704.0,4237409.0,4781.0,2020-05-01,Tennessee,TN,republican
 2020-12-02,384285.0,31114.0,4221104.0,4688.0,2020-05-01,Tennessee,TN,republican
@@ -13264,6 +13312,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-07,1.0,,,,2020-05-01,Tennessee,TN,republican
 2020-03-06,1.0,,,,2020-05-01,Tennessee,TN,republican
 2020-03-05,1.0,,,,2020-05-01,Tennessee,TN,republican
+2020-12-05,1240750.0,,10002003.0,22502.0,2020-04-30,Texas,TX,republican
 2020-12-04,1228812.0,,9882224.0,22255.0,2020-04-30,Texas,TX,republican
 2020-12-03,1215113.0,,9802334.0,22000.0,2020-04-30,Texas,TX,republican
 2020-12-02,1200674.0,,9731872.0,21756.0,2020-04-30,Texas,TX,republican
@@ -13540,6 +13589,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-06,5.0,,,,2020-04-30,Texas,TX,republican
 2020-03-05,1.0,,,,2020-04-30,Texas,TX,republican
 2020-03-04,1.0,,,,2020-04-30,Texas,TX,republican
+2020-12-05,212844.0,,1173871.0,939.0,2020-05-16,Utah,UT,republican
 2020-12-04,209170.0,,1165332.0,925.0,2020-05-16,Utah,UT,republican
 2020-12-03,206165.0,,1155726.0,917.0,2020-05-16,Utah,UT,republican
 2020-12-02,202220.0,,1149122.0,906.0,2020-05-16,Utah,UT,republican
@@ -13813,6 +13863,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-09,1.0,,33.0,,2020-05-16,Utah,UT,republican
 2020-03-08,1.0,,26.0,,2020-05-16,Utah,UT,republican
 2020-03-07,1.0,,15.0,,2020-05-16,Utah,UT,republican
+2020-12-05,251173.0,30663.0,3215838.0,4197.0,2020-05-29,Virginia,VA,democrat
 2020-12-04,247380.0,29792.0,3169036.0,4160.0,2020-05-29,Virginia,VA,democrat
 2020-12-03,244503.0,28735.0,3145233.0,4147.0,2020-05-29,Virginia,VA,democrat
 2020-12-02,242480.0,28094.0,3136510.0,4113.0,2020-05-29,Virginia,VA,democrat
@@ -14095,6 +14146,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-02-29,,,,,2020-05-29,Virginia,VA,democrat
 2020-02-28,,,,,2020-05-29,Virginia,VA,democrat
 2020-02-27,,,,,2020-05-29,Virginia,VA,democrat
+2020-12-05,4894.0,129.0,226857.0,79.0,2020-05-15,Vermont,VT,republican
 2020-12-04,4763.0,126.0,225346.0,77.0,2020-05-15,Vermont,VT,republican
 2020-12-03,4690.0,124.0,223078.0,75.0,2020-05-15,Vermont,VT,republican
 2020-12-02,4466.0,120.0,221464.0,74.0,2020-05-15,Vermont,VT,republican
@@ -14372,6 +14424,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-05,,,,,2020-05-15,Vermont,VT,republican
 2020-03-04,,,,,2020-05-15,Vermont,VT,republican
 2020-03-03,,,,,2020-05-15,Vermont,VT,republican
+2020-12-05,174290.0,,2945856.0,2925.0,2020-05-31,Washington,WA,democrat
 2020-12-04,172437.0,,2753107.0,2900.0,2020-05-31,Washington,WA,democrat
 2020-12-03,170342.0,,2753107.0,2850.0,2020-05-31,Washington,WA,democrat
 2020-12-02,167216.0,,2753107.0,2805.0,2020-05-31,Washington,WA,democrat
@@ -14690,6 +14743,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-01-24,0.0,,0.0,,2020-05-31,Washington,WA,democrat
 2020-01-23,0.0,,0.0,,2020-05-31,Washington,WA,democrat
 2020-01-22,0.0,,0.0,,2020-05-31,Washington,WA,democrat
+2020-12-05,437918.0,28532.0,2188949.0,3934.0,2020-05-13,Wisconsin,WI,democrat
 2020-12-04,432207.0,27652.0,2180320.0,3842.0,2020-05-13,Wisconsin,WI,democrat
 2020-12-03,426534.0,26826.0,2169970.0,3773.0,2020-05-13,Wisconsin,WI,democrat
 2020-12-02,420930.0,25840.0,2162616.0,3703.0,2020-05-13,Wisconsin,WI,democrat
@@ -14967,6 +15021,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-05,1.0,,19.0,,2020-05-13,Wisconsin,WI,democrat
 2020-03-04,1.0,,19.0,,2020-05-13,Wisconsin,WI,democrat
 2020-03-03,,,,,2020-05-13,Wisconsin,WI,democrat
+2020-12-05,53572.0,8319.0,1161747.0,829.0,2020-05-04,West Virginia,WV,democrat
 2020-12-04,52172.0,8114.0,1136433.0,799.0,2020-05-04,West Virginia,WV,democrat
 2020-12-03,51025.0,7928.0,1120577.0,789.0,2020-05-04,West Virginia,WV,democrat
 2020-12-02,49905.0,7636.0,1109776.0,778.0,2020-05-04,West Virginia,WV,democrat
@@ -15241,6 +15296,7 @@ date,positive,probableCases,negative,death,policy_date,state_name,state_code,par
 2020-03-08,0.0,,2.0,,2020-05-04,West Virginia,WV,democrat
 2020-03-07,0.0,,2.0,,2020-05-04,West Virginia,WV,democrat
 2020-03-06,0.0,,1.0,,2020-05-04,West Virginia,WV,democrat
+2020-12-05,35941.0,4691.0,144576.0,257.0,2020-04-30,Wyoming,WY,republican
 2020-12-04,35737.0,4690.0,144576.0,257.0,2020-04-30,Wyoming,WY,republican
 2020-12-03,35078.0,4560.0,143277.0,257.0,2020-04-30,Wyoming,WY,republican
 2020-12-02,34507.0,4541.0,141466.0,230.0,2020-04-30,Wyoming,WY,republican
