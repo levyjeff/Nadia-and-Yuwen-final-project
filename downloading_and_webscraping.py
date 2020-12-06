@@ -37,7 +37,7 @@ def get_table(col1, col2):
         col2_descs.extend([c.text for c in col2])
     col2 = col2_descs[0:43]
     
-    df = pd.DataFrame({'State':col1, 'Reopen date': col2})
+    df = pd.DataFrame({'state':col1, 'Reopen date': col2})
     for col in df.columns:
         df[col] = df[col].str.rstrip('\n')
         df[col] = df[col].str.rstrip(' ')
@@ -193,8 +193,8 @@ us_party.to_csv('us_party.csv', index=False)
 ## 4. Merge and create final dataset: data.csv
 #Create dataframe containing state_id    
 abbr = [state.abbr for state in us.states.STATES]
-state = [state.name for state in us.states.STATES]
-states_dict = {k:v for k,v in zip(abbr, state)}
+us_state = [state.name for state in us.states.STATES]
+states_dict = {k:v for k,v in zip(abbr, us_state)}
 states = pd.DataFrame(states_dict.items(), columns=['state_id', 'state'])
     
 # Open daily data, create new column state for abbreviation
