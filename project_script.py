@@ -4,8 +4,7 @@ import pandas as pd
 import numpy as np
 import us
 import matplotlib.pyplot as plt
-from matplotlib import colors
-import matplotlib.gridspec as gridspec
+import matplotlib.patches as mpatches
 import seaborn as sns
 from datetime import datetime
 
@@ -85,61 +84,69 @@ df.to_csv('data.csv', index=False)
 # Set earliest(1 March) and latest(30 November) date for each state
 
 # 1) Average Comparison of The Number of Cases between Republican and Democrat States
-df['tot_avg'] = df.groupby(['date', 'party'])['positive'].transform('mean')
+df['tot_avg_party'] = df.groupby(['date', 'party'])['positive'].transform('mean')
 df['new_cases'] = df.groupby(['state_name'])['positive'].diff(-1)
-df['new_case_mean'] = df.groupby(['date', 'party'])['new_cases'].transform('mean')
-df['new_cases_total'] = df.groupby(['date'])['new_cases'].transform('mean')
+df['new_case_mean_party'] = df.groupby(['date', 'party'])['new_cases'].transform('mean')
+df['new_case_total'] = df.groupby(['date'])['new_cases'].transform('mean')
 df['after_policy'] = (df['date'] > df['policy_date']).astype(int)
 df['new_case_after'] = df.groupby(['state_name', 'after_policy'])['new_cases'].transform('mean')
 
 # Add bar chart for average daily cases overall
-fig, ax = plt.subplots(figsize=(15,7))
-ax.set_title('Average Number of Covid-19 Daily Cases', fontsize=16)
-ax.set_xlabel('Date', fontsize=14)
-ax.set_ylabel('New Cases', fontsize=14)
-ax.bar('date', 'new_cases_total', data = df, color='lightgray')
-dstart = datetime(2020,4,1)
-dend = datetime(2020,11,30)
-ax.set_xlim([dstart, dend])
-ax2 = ax.twinx()
-ax2 = sns.lineplot(x='date', y='new_case_mean', hue='party', data = df, palette=['r', 'b'])
-ax2.set_yticks([])
-ax2.set_ylabel('')
+def plot_cases_by_party(data, fname):
+    fig, ax = plt.subplots(figsize=(15,7))
+    ax.set_title('Average Number of Covid-19 Daily Cases', fontsize=16)
+    ax.set_xlabel('Date', fontsize=14)
+    ax.set_ylabel('New Cases', fontsize=14)
+    ax.bar('date', 'new_case_total', data = data, color='lightgray')
+    dstart = datetime(2020,4,1)
+    dend = datetime(2020,11,30)
+    ax.set_xlim([dstart, dend])
+    ax2 = ax.twinx()
+    ax2 = sns.lineplot(x='date', y='new_case_mean_party', hue='party', data = data, palette=['r', 'b'])
+    ax2.set_yticks([])
+    ax2.set_ylabel('')
+    legend = ax2.legend(loc='best')
+    legend.texts[0].set_text('Political Party')
+    plt.savefig(fname)
+    plt.show()
+    
+plot_cases_by_party(df, 'average_by_party.png')
 
-# Try plot new_cases with vertical line
-# Change df_reopening to dictionary
-df_reopening = df_reopening.set_index('state')
-reopening_dict = df_reopening['policy_date'].to_dict()
+# 2) Show bar chart by state with highest average number of Covid-19 cases after reopening
+df_overall = df[['state_name', 'new_case_after', 'after_policy', 'party']].drop_duplicates()
+df_overall = df_overall[df_overall['after_policy']==1].nlargest(25, 'new_case_after')
 
-# filter top 5 states
-top5 = df[['state_name', 'new_case_after', 'after_policy']].drop_duplicates()
-print(top5[top5['after_policy']==1].nlargest(5, 'new_case_after'))
-top5_state = ['California', 'Texas', 'Florida', 'Illinois', 'Ohio']
-top5 = df.loc[df['state_name'].isin(top5_state)] 
+# Dictionary with key state
+def bar_by_party(data, fname):
+    fig, ax = plt.subplots(figsize=(15,8))
+    ax.set_title('Average Number of New Cases of 25 States with Highest Cases after Reopening', fontsize=16)
+    ax.set_xlabel('Total Cases', fontsize=14)
+    ax.set_ylabel('State', fontsize=14)
+    y_pos = np.arange(len(df_overall['state_name']))
+    ax.set_yticks(y_pos)
+    ax.set_yticklabels(df_overall['state_name'])
+    ax.invert_yaxis()
+    
+    top25_state = [r for r in df_overall['state_name']]
+    top25_party = [r for r in df_overall['party']]
+    top25_dict = {k:v for k,v in zip(top25_state, top25_party)}
 
+    clr = []
+    for v in top25_dict.values(): # keys are the names of the boys
+        if v == 'republican':
+            clr.append('indianred')
+        else:
+            clr.append('darkblue')
+            
+    ax.barh(y_pos, data['new_case_after'], color=clr, align='center')
+    red_patch = mpatches.Patch(color='indianred', label='Republican')
+    blue_patch = mpatches.Patch(color='darkblue', label='Democrat')
+    plt.legend(handles=[red_patch, blue_patch])
+    plt.savefig(fname)
+    plt.show()
 
+bar_by_party(df_overall, 'top25_states_highest_cases.png')
 
-fig, ax1 = plt.subplots(figsize=(12,7))
-ax1.set_title('Average Number of Covid-19 Daily Cases', fontsize=16)
-ax1.set_xlabel('Date', fontsize=14)
-ax1.set_ylabel('New Cases', fontsize=14)
-ax1 = sns.lineplot(x='date', y='new_cases', data = top5, hue = 'state_name')
-ax1.axvline(datetime(2020,5,15), color="red", linestyle="--")
+# 2) Average comparison of policy date between republican and democrat states
 
-
-
-
-
-fig = plt.figure()
-gs = gridspec.GridSpec(2, 2, hspace=0, wspace=0)
-(ax1, ax2), (ax3, ax4) = gs.subplots(sharex='col', sharey='row')
-fig.suptitle('Average Number of Covid-19 Daily Cases')
-y1 = top5[top5['state_name']=='California'][['new_cases', 'date']]
-ax1.plot('date', 'new_cases', data=y1)
-y2 = top5[top5['state_name']=='Texas'][['new_cases', 'date']]
-ax2.plot('date', 'new_cases', data=y2)
-y3 = top5[top5['state_name']=='Florida'][['new_cases', 'date']]
-ax3.plot('date', 'new_cases', data=y3)
-y4 = top5[top5['state_name']=='Illinois'][['new_cases', 'date']]
-ax4.plot('date', 'new_cases', data=y4)
 
