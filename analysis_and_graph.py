@@ -6,6 +6,12 @@ import matplotlib.patches as mpatches
 import seaborn as sns
 from datetime import datetime
 
+"""
+General grading comments:
+- You made some very nice plots
+- The few functions you wrote are ok, but you left most of your code unorganized
+- You can use ' or " for strings, but be consistent unless you need to enclose one value inside the other, e.g. change to double-quotes in order to write s = "'"
+"""
 
 # Creating Graphs
 
@@ -122,7 +128,7 @@ low_5 = avg_case_increase.sort_values('dif').head(5)['state_name'].tolist()
 top_5 = avg_case_increase.sort_values('dif').tail(5)['state_name'].tolist()
 low_string = "The 5 states with lowest avg daily new cases are {}".format(', '.join([str(elem) for elem in low_5]))
 high_string = "The 5 states with highest avg daily new cases are {}".format(', '.join([str(elem) for elem in top_5]))
-print(high_string)
+print(high_string) #JL: delete or comment intermediate output
 print(low_string)
 
 #add list characterstics in the list
